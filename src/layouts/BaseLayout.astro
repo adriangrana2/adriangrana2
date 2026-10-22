@@ -1,0 +1,30 @@
+---
+// Load the shared stylesheet for every page using this layout.
+import '../styles/global.css';
+
+// Define the information each page must provide.
+interface Props {
+  title: string;
+  description: string;
+}
+
+// Read the values supplied by the page.
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <!-- Shared browser settings and page-specific metadata. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Insert the content supplied by each page. -->
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

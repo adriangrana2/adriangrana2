@@ -1,33 +1,30 @@
 ---
-import '../styles/global.css';
-const title = 'Adrian Granados';
+// The layout now handles the document structure and global stylesheet.
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<!doctype html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Die persönliche Website von Adrian Granados." />
-    <title>{title}</title>
-  </head>
-  <body>
-    <main>
-        <section aria-labelledby="hero-title">
-            <p>Fachinformatiker: Daten- und Prozessanalyse in Ausbildung</p>
-            <h1 id="hero-title">{title}</h1>
-            <p class="hero__focus">
-                Python &amp; SQL · Datenanalyse · Datenqualität · Prozessoptimierung 
-            </p>
-            <p class="hero__interests">
-                <strong>Weitere Themen: </strong>
-                Java · Cloud · Cybersecurity · Software · Netzwerke 
-            </p>
-            <p>
-                Ich baue Dinge, experimentiere mit Technologie und halte fest, was ich
-                dabei lerne.
-            </p>
-        </section>
-    </main>
-  </body>
-</html>
+<BaseLayout
+  title="Adrian Granados"
+  description="Die persönliche Website von Adrian Granados."
+>
+  <!-- Introduce the author, study focus, and broader interests. -->
+  <section aria-labelledby="hero-title">
+    <p>Fachinformatiker für Daten- und Prozessanalyse in Ausbildung</p>
+
+    <h1 id="hero-title">Adrian Granados</h1>
+
+    <p class="hero__focus">
+      Python&amp; SQL · Datenanalyse · Datenqualität · Prozessoptimierung 
+    </p>
+
+    <p class="hero__interests">
+      <strong>Weitere Themen: </strong>
+      Cloud · Cybersecurity · Software · Netzwerke 
+    </p>
+
+    <p>
+      Ich baue Dinge, experimentiere mit Technologie und halte fest, was ich
+      dabei lerne.
+    </p>
+  </section>
+</BaseLayout>
