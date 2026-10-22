@@ -1,0 +1,113 @@
+/* Site-wide defaults and reusable design tokens. */
+:root {
+  /* Ask the browser to use its light appearance for built-in controls. */
+  color-scheme: light;
+
+  /* Use the operating system's standard sans-serif font. */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Set default text and page colors at the document level. */
+  color: #202a32;
+  background: #f4f2ed;
+
+  /* Named colors make it easier to adjust the design consistently. */
+  --color-text: #202a32;
+  --color-muted: #52616a;
+  --color-background: #f4f2ed;
+  --color-surface: #fff;
+  --color-accent: #386b68;
+  --color-border: #d9dedb;
+
+  /* Shared maximum width for readable page content. */
+  --content-width: 72rem;
+}
+
+/* Include padding and borders inside each element's declared width and height. */
+* {
+  box-sizing: border-box;
+}
+
+/* Set the basic size, spacing, text color, background, and line spacing for each page. */
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--color-text);
+  background: var(--color-background);
+  line-height: 1.6;
+}
+
+/* Give links the site's accent color. */
+a {
+  color: var(--color-accent);
+}
+
+/* Make keyboard focus visible for people navigating without a mouse. */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Center the main content and keep it within the shared page width. */
+main {
+  width: min(calc(100% - 2rem), var(--content-width));
+  margin-inline: auto;
+}
+
+/* Make the first section fill the screen and center its content vertically. */
+main > section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-block: clamp(4rem, 12vh, 9rem);
+}
+
+/* Style the short introductory label above the main heading. */
+main > section > p:first-child {
+  margin: 0 0 1rem;
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Make the main heading large and scale it smoothly with the screen width. */
+h1 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(3.2rem, 10vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+}
+
+/* Give the topics line a little separation and visual emphasis. */
+main > section > p:nth-of-type(2) {
+  margin-block: 1.75rem 0.5rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 650;
+}
+
+/* Limit the introduction's line length and distinguish it from the heading. */
+main > section > p:last-child {
+  max-width: 40rem;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+}
+
+/* Show broader interests quietly. */
+.hero__interests {
+  max-width: 42rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-muted);
+  font-size: 1rem;
+}
+
+/* Keep the label readable while the list remains visually secondary. */
+.hero__interests strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
