@@ -1,0 +1,37 @@
+name: Deploy to GitHub Pages
+
+# Build and publish whenever this branch receives a push.
+on:
+  push:
+    branches: [step-by-step-build]
+
+# Give the workflow permission to read the code and publish to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  # Install dependencies, build Astro, and upload the generated site.
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the repository
+        uses: actions/checkout@v7
+
+      - name: Install dependencies and build the site
+        uses: withastro/action@v6
+        with:
+          node-version: 24
+
+  # Publish the generated site after the build succeeds.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
