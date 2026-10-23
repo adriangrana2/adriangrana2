@@ -1,19 +1,23 @@
 ---
-// Load the shared stylesheet for every page using this layout.
+// Load the shared stylesheet.
 import '../styles/global.css';
 
-// Define the information each page must provide.
+// Import the default language and the permitted language type.
+import { defaultLocale, type Locale } from '../i18n';
+
+// Define the information each page can provide.
 interface Props {
   title: string;
   description: string;
+  lang?: Locale;
 }
 
-// Read the values supplied by the page.
-const { title, description } = Astro.props;
+// Use the default language when a page does not supply one.
+const { title, description, lang = defaultLocale } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang="lang">
   <head>
     <!-- Shared browser settings and page-specific metadata. -->
     <meta charset="UTF-8" />
