@@ -2,8 +2,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   // The origin where GitHub Pages hosts your site.
-  site: 'https://adriangrana2.github.io',
+  site: 'https://adriangranados.net',
 
-  // The repository's folder within that origin.
-  base: '/adriangrana2',
+  // No base prefix is needed: the custom domain serves the site at "/".
 });
