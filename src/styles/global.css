@@ -111,3 +111,40 @@ main > section > p:last-child {
   color: var(--color-text);
   font-weight: 600;
 }
+
+/* Arrange the language links horizontally and remove default list spacing. */
+.language-switcher {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 1rem 0;
+  list-style: none;
+}
+
+/* Give each language link a comfortable clickable area. */
+.language-switcher a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.5rem;
+  border-radius: 0.35rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Provide a visible response when the pointer moves over a link. */
+.language-switcher a:hover {
+  background: var(--color-surface);
+  text-decoration: underline;
+}
+
+/* Distinguish the active language using both color and an underline. */
+.language-switcher a[aria-current="page"] {
+  color: var(--color-background);
+  background: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

@@ -12,6 +12,9 @@ export function getStaticPaths() {
   }));
 }
 
+// Import the reusable language links.
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+
 // Describe the language property supplied by getStaticPaths().
 interface Props {
   lang: Locale;
@@ -27,6 +30,17 @@ const text = homeText[lang];
   description={text.description}
   lang={lang}
 >
+
+<!-- Link to each translated version of the homepage. -->
+  <LanguageSwitcher
+    lang={lang}
+    urls={{
+      de: '/de/',
+      en: '/en/',
+      es: '/es/',
+    }}
+  />
+  
   <!-- Use the same structure with translated content. -->
   <section aria-labelledby="hero-title">
     <p>{text.role}</p>

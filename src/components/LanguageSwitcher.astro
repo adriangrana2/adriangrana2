@@ -1,0 +1,31 @@
+---
+// Reuse the supported languages and their readable names.
+import { locales, languageNames, type Locale } from '../i18n';
+
+// Each page supplies its current language and equivalent page URLs.
+interface Props {
+  lang: Locale;
+  urls: Record<Locale, string>;
+}
+
+const { lang, urls } = Astro.props;
+---
+
+<!-- Group the language links in a semantic list. -->
+<ul class="language-switcher">
+  {
+    locales.map((locale) => (
+      <li>
+        <a
+          href={urls[locale]}
+          hreflang={locale}
+          lang={locale}
+          aria-label={languageNames[locale]}
+          aria-current={locale === lang ? 'page' : undefined}
+        >
+          {locale.toUpperCase()}
+        </a>
+      </li>
+    ))
+  }
+</ul>
