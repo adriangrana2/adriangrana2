@@ -1,0 +1,30 @@
+---
+// Reuse the language switcher and supported language type.
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import type { Locale } from '../i18n';
+
+// Receive the current language and equivalent page URLs.
+interface Props {
+  lang: Locale;
+  languageUrls: Record<Locale, string>;
+}
+
+const { lang, languageUrls } = Astro.props;
+
+// Respect Astro's configured base and avoid doubled slashes.
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Link to the homepage in the visitor's current language.
+const homeUrl = `${basePath}/${lang}/`;
+---
+
+<!-- Group the site's identity and language controls. -->
+<header class="site-header">
+  <!-- Return to the current language's homepage. -->
+  <a class="site-brand" href={homeUrl}>
+    Adrian Granados
+  </a>
+
+  <!-- Link to the equivalent page in each supported language. -->
+  <LanguageSwitcher lang={lang} urls={languageUrls} />
+</header>

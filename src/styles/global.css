@@ -148,3 +148,38 @@ main > section > p:last-child {
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
+
+/* Align the header with the main content and allow wrapping on small screens. */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  width: min(calc(100% - 2rem), var(--content-width));
+  margin-inline: auto;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Make the name a recognizable link back to the current-language homepage. */
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--color-text);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Make the brand link's interactive behavior visible on hover. */
+.site-brand:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* Let the header control vertical spacing around the language switcher. */
+.site-header .language-switcher {
+  padding: 0;
+}

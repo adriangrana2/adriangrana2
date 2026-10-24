@@ -1,23 +1,30 @@
 ---
-// Load the shared stylesheet.
+// Load the shared stylesheet and site header
 import '../styles/global.css';
+import Header from '../components/Header.astro';
 
 // Import the default language and the permitted language type.
 import { defaultLocale, type Locale } from '../i18n';
 
-// Define the information each page can provide.
+// Describe the properties supplied by each page.
 interface Props {
   title: string;
   description: string;
   lang?: Locale;
+  languageUrls: Record<Locale, string>;
 }
 
 // Use the default language when a page does not supply one.
-const { title, description, lang = defaultLocale } = Astro.props;
+const { 
+  title, 
+  description, 
+  lang = defaultLocale,
+  languageUrls,
+  } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="lang">
+<html lang={lang}>
   <head>
     <!-- Shared browser settings and page-specific metadata. -->
     <meta charset="UTF-8" />
@@ -26,6 +33,8 @@ const { title, description, lang = defaultLocale } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <!-- Display the shared identity and language controls. -->
+    <Header lang={lang} languageUrls={languageUrls} />
     <!-- Insert the content supplied by each page. -->
     <main>
       <slot />

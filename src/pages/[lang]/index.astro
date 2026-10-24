@@ -12,9 +12,6 @@ export function getStaticPaths() {
   }));
 }
 
-// Import the reusable language links.
-import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
-
 // Describe the language property supplied by getStaticPaths().
 interface Props {
   lang: Locale;
@@ -23,24 +20,24 @@ interface Props {
 // Select the text matching this page's language.
 const { lang } = Astro.props;
 const text = homeText[lang];
+
+// Respect the URL prefix configured in Astro.
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Supply the equivalent homepage URL for every language.
+const languageUrls: Record<Locale, string> = {
+  de: `${basePath}/de/`,
+  en: `${basePath}/en/`,
+  es: `${basePath}/es/`,
+};
 ---
 
 <BaseLayout
   title="Adrian Granados"
   description={text.description}
   lang={lang}
+  languageUrls={languageUrls}
 >
-
-<!-- Link to each translated version of the homepage. -->
-  <LanguageSwitcher
-    lang={lang}
-    urls={{
-      de: '/de/',
-      en: '/en/',
-      es: '/es/',
-    }}
-  />
-  
   <!-- Use the same structure with translated content. -->
   <section aria-labelledby="hero-title">
     <p>{text.role}</p>
